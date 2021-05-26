@@ -1,6 +1,4 @@
-package com.udacity.jdnd.course3.critter.entity;
-
-import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
+package com.udacity.jdnd.course3.critter.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
