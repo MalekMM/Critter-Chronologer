@@ -28,7 +28,6 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    // NOT TESTED
 
     private final CustomerService customerService;
     private final EmployeeService employeeService;

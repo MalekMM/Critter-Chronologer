@@ -24,7 +24,6 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/schedule")
 public class ScheduleController {
-    // NOT TESTED
 
     private final ScheduleService scheduleService;
     private final PetService petService;
@@ -43,9 +42,9 @@ public class ScheduleController {
     @PostMapping
     public ScheduleDTO createSchedule(@RequestBody ScheduleDTO scheduleDTO) {
         Schedule schedule = DTOToEntity(scheduleDTO);
-        schedule = scheduleService.save(schedule,
+        Schedule createdSchedule = scheduleService.save(schedule,
                 scheduleDTO.getEmployeeIds(), scheduleDTO.getPetIds());
-        return entityToDTO(schedule);
+        return entityToDTO(createdSchedule);
     }
 
     @GetMapping

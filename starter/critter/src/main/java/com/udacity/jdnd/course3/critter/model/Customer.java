@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "customer")
 public class Customer {
 
     @Id
@@ -18,7 +17,7 @@ public class Customer {
     private String phoneNumber;
     private String notes;
 
-    @OneToMany(targetEntity = Pet.class)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     List<Pet> pets;
 
     // Constructors

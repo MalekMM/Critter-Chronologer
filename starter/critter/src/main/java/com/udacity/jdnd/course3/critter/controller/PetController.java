@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/pet")
 public class PetController {
-    // NOT TESTED
+
     private final PetService petService;
 
     @Autowired
