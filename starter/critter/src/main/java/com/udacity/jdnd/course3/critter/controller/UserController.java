@@ -42,7 +42,7 @@ public class UserController {
     @PostMapping("/customer")
     public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO){
         Customer customer = customerDTOToEntity(customerDTO);
-        customerService.save(customer);
+        customer = customerService.save(customer);
         return customerEntityToDTO(customer);
     }
 
@@ -65,8 +65,7 @@ public class UserController {
     @PostMapping("/employee")
     public EmployeeDTO saveEmployee(@RequestBody EmployeeDTO employeeDTO) {
         Employee employee = employeeDTOToEntity(employeeDTO);
-        employeeService.save(employee);
-        return employeeEntityToDTO(employee);
+        return employeeEntityToDTO(employeeService.save(employee));
     }
 
     @PostMapping("/employee/{employeeId}")
@@ -98,6 +97,9 @@ public class UserController {
         CustomerDTO customerDTO = new CustomerDTO();
         BeanUtils.copyProperties(customer, customerDTO);
         // add pet ids
+        if (customer.getPets() == null){
+            customer.setPets(new ArrayList<>());
+        }
         customerDTO.setPetIds(customer.getPets().stream().map(Pet::getId).collect(Collectors.toList()));
         return customerDTO;
     }

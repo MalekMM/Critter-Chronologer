@@ -6,10 +6,11 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "pet")
 public class Pet {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private PetType type;

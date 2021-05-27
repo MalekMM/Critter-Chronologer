@@ -22,7 +22,6 @@ public class ScheduleService {
     private final EmployeeRepository employeeRepository;
 
     @Autowired
-
     public ScheduleService(ScheduleRepository scheduleRepository, CustomerRepository customerRepository,
                            PetRepository petRepository, EmployeeRepository employeeRepository) {
         this.scheduleRepository = scheduleRepository;

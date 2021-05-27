@@ -24,18 +24,21 @@ public class PetService {
 
     public Pet save(Pet pet, Long customerId) {
         Customer customer = customerRepository.getOne(customerId);
+
         pet.setCustomer(customer);
+        pet = petRepository.save(pet);
+
+        customer = pet.getCustomer();
         // add pet to customer's pet list
         List<Pet> pets = customer.getPets();
         // create a new pet list if the list is empty
-        if (pets.isEmpty()) {
+        if (pets == null) {
             pets = new ArrayList<>();
         }
         pets.add(pet);
         customer.setPets(pets);
-        // save and return
-        customerRepository.save(customer);
-        return petRepository.save(pet);
+
+        return pet;
     }
 
     public Pet getOnePet(Long id) {
@@ -47,6 +50,6 @@ public class PetService {
     }
 
     public List<Pet> getPetsByCustomer(Long customerId){
-        return petRepository.findPetsByCustomer(customerId);
+        return petRepository.findPetsByCustomerId(customerId);
     }
 }

@@ -43,8 +43,9 @@ public class ScheduleController {
     @PostMapping
     public ScheduleDTO createSchedule(@RequestBody ScheduleDTO scheduleDTO) {
         Schedule schedule = DTOToEntity(scheduleDTO);
-        return entityToDTO(scheduleService.save(schedule,
-                scheduleDTO.getEmployeeIds(), scheduleDTO.getPetIds()));
+        schedule = scheduleService.save(schedule,
+                scheduleDTO.getEmployeeIds(), scheduleDTO.getPetIds());
+        return entityToDTO(schedule);
     }
 
     @GetMapping

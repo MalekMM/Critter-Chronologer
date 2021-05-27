@@ -7,11 +7,11 @@ import java.time.DayOfWeek;
 import java.util.Set;
 
 @Entity
-@Table
-public class Employee {
+@Table(name = "employee")
+public class Employee{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Nationalized
